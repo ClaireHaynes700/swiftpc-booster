@@ -1,13 +1,14 @@
 # ⚡ SwiftPC-Booster
 
-**SwiftPC-Booster** is a lightweight Windows batch utility that helps you reclaim disk space and improve system responsiveness by cleaning out temporary files, cached data, and the Recycle Bin.
+**SwiftPC-Booster** is a lightweight Windows batch utility designed to reclaim disk space and improve system responsiveness by deleting temporary files and cached data and emptying the Recycle Bin.
 
-> 🧹 One click to clear system clutter safely and efficiently.
+> 🧹 One-click cleanup for safe and effiecient system maintenace.
 
 ---
 
 ## 🚀 Features
 
+SwiftPC-Booster performs the following operations:
 - Deletes temporary files from:
   - `%TEMP%` (user temp folder)
   - `C:\Windows\Temp`
@@ -21,7 +22,7 @@
 ## ⚠️ Important Notes
 
 - **Administrator access is required** to modify system folders.  
-  The script will prompt for elevation automatically if needed.
+  The script will automatically prompt for elevation if needed.
 - **Deleting Prefetch data is optional** — it is *not* necessary for performance.  
   Windows automatically manages Prefetch to speed up app loading; the script clears it only if you choose to.
 - The cleanup operations are safe, but **use at your own risk**.  
@@ -34,61 +35,76 @@
 1. Download or clone this repository:
    ```bash
    git clone https://github.com/ASaha-os/switfpc-booster.git
-Open the folder in File Explorer.
+   
+2. Open the folder in File Explorer.
 
-Right-click switfpc-booster.bat and select:
+3. Right-click **switfpc-booster.bat** and select **Run as administrator**
 
-Run as administrator
+4. Follow the on-screen messages. The script will do the following:
+    - Clear temporary folders
+    - Delete unnecessary cached files
+    - Empty the Recycle Bin
+    - Display a summary when complete
+      
+---
 
-Follow on-screen messages — the script will:
+## ⚙️ Usage
 
-Clear temporary folders
-
-Delete unnecessary cached files
-
-Empty the Recycle Bin
-
-Display a summary when complete
-
-⚙️ Usage
 🖱️ Manual Run
-Simply double-click the batch file (right-click → Run as administrator).
 
-⏰ Optional: Scheduled Cleanup
-You can automate it using Windows Task Scheduler:
+Double-click the batch file (right-click → Run as administrator).
 
-Open Task Scheduler → Create Task
+⏰ Optional: Automated Run
 
-Under General, check:
+Schedule cleanup in the Windows Task Scheduler as follows:
 
-“Run with highest privileges”
+1. Open Windows Task Scheduler
+   
+2. Under **Actions**, click **Create Task**
 
-Under Actions, choose:
+3. On the **General** tab, select the **Run with highest privileges** checkbox.
 
-Start a program → Browse to switfpc-booster.bat
+4. On the **Actions** tab, click **New**.
 
-Set your preferred trigger (e.g., weekly).
+5. In the **New Action** window, in the **Action** field, select **Start a Program** from the dropdown menu.
+   
+6. In the **Program/script** field, click **Browse** and choose switfpc-booster.bat 
 
-🧠 How It Works
-Step	Task	Command
-1	Clear Prefetch files	del /f /q %windir%\Prefetch\*
-2	Clear user temp files	del /f /q %TEMP%\*
-3	Clear system temp files	del /f /q %windir%\Temp\*
-4	Empty Recycle Bin	powershell Clear-RecycleBin -Force
+7. Set your preferred trigger (e.g., weekly).
 
-🧩 Compatibility
+---
+
+## 🧠 How It Works
+
+| Step     | Command  | Task     |
+|----------|----------|----------|
+| 1        | Clear Prefetch files  | del /f /q %windir%\Prefetch\*  |
+| 2        | Clear user temp files  | del /f /q %TEMP%\*  |
+| 3        | Clear system temp files | del /f /q %windir%\Temp\* |
+| 4        | Empty Recycle Bin  | powershell Clear-RecycleBin -Force
+
+
+---
+
+## 🧩 Compatibility
+
 ✅ Windows 10
 
 ✅ Windows 11
 
 ⚠️ Not needed or compatible with macOS / Linux (they auto-manage temp files)
 
-🪪 License
+---
+
+## 🪪 License
 This project is released under the MIT License — feel free to modify and redistribute responsibly.
 
 css
 Copy code
 MIT License © 2025 [Your Name]
+
+---
+
 🧰 Recommended Alternatives (Built-in)
 If you prefer not to use scripts, Windows offers native cleanup tools:
 
@@ -98,14 +114,18 @@ Storage Sense: Settings → System → Storage → Storage Sense
 
 These provide similar cleanup features with full system safety.
 
-💡 Future Ideas
+---
+
+## 💡 Future Ideas
  Add PowerShell version with progress and logging
 
  Add command-line switches (/silent, /log, /prefetch-off)
 
  Create cross-platform version for macOS & Linux (optional)
 
-💬 Feedback
+---
+
+## 💬 Feedback
 Found a bug or have a suggestion?
 Open an issue or submit a pull request!
 
